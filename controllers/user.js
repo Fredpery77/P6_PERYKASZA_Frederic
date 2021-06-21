@@ -1,17 +1,8 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require ('../models/User');
-const MaskData = require('maskdata');
 
-//définit comment l'adresse mail sera masquée pour le champs emailMasked
-const maskEmailOptions = {
-    maskWith: "*",
-    unmaskedStartCharacters: 3,
-    unmaskedEndCharacters: 2,
-    maskAtTheRate: false,
-    maxMaskedCharactersBeforeAtTheRate: 10,
-    maxMaxkedCharactersAfterAtTheRate: 10
-};
+
 
 // Inscription
 exports.signup = (req, res, next) => {
@@ -19,7 +10,6 @@ bcrypt.hash(req.body.password, 10)
 .then(hash => {
     const user = new User({
         email: req.body.email,
-        emailMasked: MaskData.maskEmail2(req.body.email, maskEmailOptions),
         password: hash
     });
     user.save()

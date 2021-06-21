@@ -77,7 +77,7 @@ exports.likeOrDislikeSauce = (req, res, next) => {
     Sauce.findOne({ _id: req.params.id }).then(sauce => {
        
         if (likeStatus === 1) {
-            console.log(userId + ' aime cette sauce.');
+            console.log('J\'aime cette sauce.');
             Sauce.updateOne(
                 { _id: thisSauceId },
                 { $push: { usersLiked: userId }, $inc: { likes: +1 }, }
