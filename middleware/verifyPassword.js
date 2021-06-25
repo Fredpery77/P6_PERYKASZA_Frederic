@@ -1,4 +1,4 @@
-const passwordSchema = require ('../models/password');
+const passwordSchema = require ('./password.js');
 
 
 // vérifie que le mot de passe valide le schema donné pour s'assurer que l'utilisateur est un mot de passe fort 
